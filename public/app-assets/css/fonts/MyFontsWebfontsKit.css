@@ -1,0 +1,28 @@
+/**
+ * @license
+ * MyFonts Webfont Build ID 4485927, 2022-03-11T08:39:41-0500
+ * 
+ * The fonts listed in this notice are subject to the End User License
+ * Agreement(s) entered into by the website owner. All other parties are 
+ * explicitly restricted from using the Licensed Webfonts(s).
+ * 
+ * You may obtain a valid license at the URLs below.
+ * 
+ * Webfont: RoughNo6 by SoftMaker
+ * URL: https://www.myfonts.com/fonts/softmaker/rough/17-bold/
+ * Copyright: Copyright (c) 2015 by SoftMaker Software GmbH and its licensors. All rights reserved.
+ * 
+ * 
+ * 
+ * © 2022 MyFonts Inc
+*/
+
+
+/* @import must be at top of file, otherwise CSS will not work */
+@import url("//hello.myfonts.net/count/447327");
+  
+@font-face {
+  font-family: "RoughNo6";
+  src: url('webFonts/RoughNo6/font.woff2') format('woff2'), url('webFonts/RoughNo6/font.woff') format('woff');
+}
+
