@@ -122,14 +122,14 @@
         <!-- Dashboard -->
         <li class="menu-item {{ (request()->routeIs('back_office.admin')) ? 'active' : '' }}">
             <a href="{{ route('back_office.admin') }}" class="menu-link">
-            <i class="menu-icon tf-icons bx bx-home-circle"></i>
+            <i class="menu-icon tf-icons bx bx-pie-chart"></i>
             <div data-i18n="Analytics">Tableau Board</div>
             </a>
         </li>
 
         <li class="menu-item {{ (request()->routeIs('user.*')) ? 'active' : '' }}">
             <a href="{{ route('user.list') }}" class="menu-link">
-                <i class="menu-icon tf-icons bx bx-copy"></i>
+                <i class="menu-icon tf-icons bx bx-user"></i>
             <div data-i18n="Analytics">Utilisateurs</div>
             </a>
         </li>
@@ -155,7 +155,7 @@
 
         <li class="menu-item {{ (request()->routeIs('campagne.*')) ? 'active' : '' }}">
             <a href="javascript:void(0)" class="menu-link menu-toggle">
-            <i class="menu-icon tf-icons bx bx-copy"></i>
+                <i class="menu-icon tf-icons bx bx-user-voice"></i>
             <div data-i18n="Extended UI">Campagnes</div>
             </a>
             <ul class="menu-sub">
@@ -175,7 +175,7 @@
 
         <li class="menu-item {{ (request()->routeIs('tontine.*')) ? 'active' : '' }}">
             <a href="javascript:void(0)" class="menu-link menu-toggle">
-            <i class="menu-icon tf-icons bx bx-copy"></i>
+                <i class="menu-icon tf-icons bx bx-group"></i>
             <div data-i18n="Extended UI">Tontines</div>
             </a>
             <ul class="menu-sub">
@@ -194,7 +194,7 @@
 
         <li class="menu-item {{ (request()->routeIs('sector.list')) ? 'active' : '' }}">
             <a href="{{ route('sector.list') }}" class="menu-link">
-            <i class="menu-icon tf-icons bx bx-home-circle"></i>
+            <i class="menu-icon tf-icons bx bx-circle"></i>
             <div data-i18n="Analytics">Secteur</div>
             </a>
         </li>

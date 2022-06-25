@@ -10,11 +10,8 @@ use App\Http\Controllers\ProjetController;
 use App\Http\Controllers\SectorController;
 use App\Http\Controllers\TontineController;
 use App\Http\Controllers\UserController;
-use App\Models\Tontine;
 use Illuminate\Http\Client\Request;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
-
 
 
 Route::get('/mot-de-passe-oublie/success', [UserController::class, 'success'])->name('mot_de_passe.success');

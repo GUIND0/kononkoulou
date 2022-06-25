@@ -2,7 +2,7 @@
 @section('content')
 <div class="container">
     <div class="main-body">
-        <div class="row justify-content-end mb-3 px-3">
+        <div class="justify-content-end mb-3 px-3">
             <a class="btn btn-primary" href="{{ route('user.list')}}"><i class="ti-home mr-2"></i>Retour</a>
         </div>
           <div class="row gutters-sm">

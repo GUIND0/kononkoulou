@@ -37,13 +37,9 @@
                       <div class="card-body">
                                 <div class="form-group">
                                     <label>Photo de profil</label>
-                                    <input type="file" id="image" name="photo" class="file-upload-default">
-                                    <div class="input-group col-xs-12">
-                                    <input type="text"  accept="image/png, image/gif, image/jpeg" value="{{ old('logo') }}" class="form-control file-upload-info" disabled placeholder="Upload Image">
-                                    <span class="input-group-append">
-                                        <button class="file-upload-browse btn btn-primary" type="button">Charger</button>
-                                    </span>
-                                    </div>
+
+                                    <input type="file" id="image" name="photo"  accept="image/png, image/gif, image/jpeg"  class="form-control file-upload-info">
+
                                     @if($errors->has('logo'))
                                         <span class="help-block text-danger">
                                             <li>{{ $errors->first('logo') }}</li>
@@ -65,13 +61,9 @@
                                 @if (!auth()->user()->validate)
                                     <div class="form-group">
                                         <label>Photo de carte d'identité</label>
-                                        <input type="file" name="carte" class="file-upload-default">
-                                        <div class="input-group col-xs-12">
-                                        <input type="text" value="{{ old('carte') }}" accept="image/png, image/gif, image/jpeg" class="form-control file-upload-info" disabled placeholder="Upload Image">
-                                        <span class="input-group-append">
-                                            <button class="file-upload-browse btn btn-primary" type="button">Charger</button>
-                                        </span>
-                                        </div>
+
+                                        <input type="file" name="carte"  accept="image/png, image/gif, image/jpeg" class="form-control">
+
                                         @if($errors->has('carte'))
                                             <span class="help-block text-danger">
                                                 <li>{{ $errors->first('carte') }}</li>
@@ -147,7 +139,7 @@
 
                             <div class="form-group">
                                 <label class="form-label">Pays</label>
-                                <select class="custom-select">
+                                <select class="form-control">
                                     @foreach ($pays as $value)
                                         <option {{ auth()->user()->pays_id == $value->id ? 'selected' : '' }}  value="{{ $value->id }}">{{ $value->libelle }}</option>
                                     @endforeach
