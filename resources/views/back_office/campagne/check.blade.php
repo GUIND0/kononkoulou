@@ -31,7 +31,7 @@
                     <td>{{ $campagne->type->name }}</td>
                     <td>
                         @if ($campagne->status == 'en_cours')
-                            <span class="badge bg-info">En cours de traitement</span>
+                            <span class="badge bg-info">En traitement</span>
                         @endif
                         @if ($campagne->status == 'valider')
                             <span class="badge bg-primary">Valider</span>

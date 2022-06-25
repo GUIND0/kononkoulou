@@ -58,6 +58,15 @@
                             </div>
                         </div>
 
+                        <hr>
+
+                        <div class="">
+                            @if (auth()->user()->profil->name == "admin")
+                                <a class="btn btn-success" href="{{ route('campagne.accepter',$project->id) }}">Valider la demande</a>
+                                <a class="btn btn-danger ml-1" href="{{ route('campagne.rejeter',$project->id) }}">Réfuser la demande</a>
+                            @endif
+                        </div>
+
                     </div>
                     <div class="col-xl-8">
                         <!-- Account details card-->
@@ -76,12 +85,7 @@
                 </div>
             </div>
         </div>
-        <div class="row justify-content-center">
-            @if (auth()->user()->profil->name == "admin")
-                <a class="btn btn-success" href="{{ route('campagne.accepter',$project->id) }}">Valider cette demande campagne de financement</a>
-                <a class="btn btn-danger ml-1" href="{{ route('campagne.rejeter',$project->id) }}">Réfuser cette demande campagne de financement</a>
-            @endif
-        </div>
+
     @else
         <div class="row justify-content-end">
             <a class="btn btn-primary" href="{{ route('catalogue.index')}}"><i class="ti-arrow-left mr-2"></i>Retour</a>
