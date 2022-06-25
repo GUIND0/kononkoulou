@@ -1,6 +1,6 @@
 @extends('back_office.partials.main')
 @section('content')
-<div class="row justify-content-end px-3 mb-4">
+<div class="justify-content-end px-3 mb-4">
     <a  href="{{ route('sector.add')}}" class="btn btn-primary">
         <i class="ti-plus"></i>
             Ajouter un secteur
@@ -31,7 +31,7 @@
                                     <td><b>{{ $sector->name }}</b></td>
                                     <td>
                                         <a class="btn btn-primary" href="{{ route('sector.add',$sector->id) }}">Modifier</a>
-                                        <a data-id="{{ $sector->id }}"  class="btn btn-danger delete" onclick="" >Supprimer</a>
+                                        <a data-id="{{ $sector->id }}"  class="btn btn-danger delete text-white" onclick="" >Supprimer</a>
                                     </td>
                                 </tr>
                             @endforeach
