@@ -17,7 +17,6 @@ class BackOfficeController extends Controller
         return view('back_office.aide.index');
     }
 
-
     public function admin(Request $request){
 
         $nbre_projets = Project::all()->count();
@@ -33,14 +32,13 @@ class BackOfficeController extends Controller
         $nbre_utilisateur = User::all()->count();
         $total_vues = Project::all()->sum('vues');
 
-
         $campaign = Campaign::select(
             DB::raw('COUNT(campaigns.id) as nombre'),
             DB::raw('sectors.name as name')
         )
         ->join('projects','projects.id','campaigns.projects_id')
-        ->join('sectors_has_projects','sectors_has_projects.sectors_id','projects.id')
-        ->join('sectors','sectors.id','sectors_has_projects.projects_id')
+        ->join('sectors_has_projects','sectors_has_projects.projects_id','projects.id')
+        ->join('sectors','sectors.id','sectors_has_projects.sectors_id')
         ->groupBy('name')
         ->get();
 
@@ -64,7 +62,6 @@ class BackOfficeController extends Controller
             $rsTypeCampaign[$key]['nombre'] = $value->nombre;
             $rsTypeCampaign[$key]['name'] = $value->name;
         }
-
 
         $user = User::select(
             DB::raw('COUNT(users.id) as nombre'),
@@ -224,7 +221,6 @@ class BackOfficeController extends Controller
             'nbr_projet_finance',
             'nbr_contributions',
             'contributions'
-
         ));
     }
 

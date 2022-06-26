@@ -14,6 +14,7 @@ use Illuminate\Support\Facades\Session;
 use GuzzleHttp\Client;
 use GuzzleHttp\HandlerStack;
 use GuzzleHttp\Subscriber\Oauth\Oauth1;
+use League\Flysystem\Config;
 
 class CampagneController extends Controller
 {
@@ -160,16 +161,20 @@ class CampagneController extends Controller
         $campagne = Campaign::where('projects_id',$projet->id)->first();
         $campagne->status = 'valider';
         $campagne->save();
-        $response = Http::post('https://graph.facebook.com/v13.0/103174605632349/feed?message=cool&link=http://kononkoulou.com/&access_token=EAAEv8nCokEgBADsE4tqeTZA5oNjZAWI4P29RDcFH2gvCwh3Ij1Cs2XsVmChzXv3dQ58UZCBujEyK4M5gHxmMZBceLVd984zvDVMPkB6Uosludt8gB7JnBJTJnB3dwwzRmMc8aIB9sfuVKB6vGSAHpmZAiJDKxgOUv5ZCBDou9WuIBTiZAc4OiZAeFPQ7KLvtXZAzZAApMLZBLiiOdRBKGGgZAwbV',[
-            'message' => 'Venez soutenir le projet ' .$projet->nom . ' qui entame sa campagne de financement'
-        ]);
+
+        // $response = Http::post('https://graph.facebook.com/v14.0/103174605632349/photos?access_token=EAAEv8nCokEgBAMVoZChvWdNii8ggWTeRlAVcRa0lrosM8HDEZCHNxCsQKw0iVQjqZBEnkQNz1GQidsauj4ZAZAaUyO2ANVYGrZB22ZBNTkZBQPi8dc9MrXyd2YvMhQ6wLVuJRzOZC3iknofSLGkARB1TWol98XbWLcMtdSKD9A57PbqAIrZArPbi2xLlHKdlJBZC5KN62IkaNElvOzZC9GZBZCvmOo',[
+        //     'message' => 'Venez soutenir le projet ' .$projet->nom . ' qui entame sa campagne de financement',
+        //     'url' => 'http://kononkoulou.com/' . $projet->logo
+        // ]);
 
         $response1 = Http::withHeaders([
-            'Authorization'  =>  'OAuth oauth_consumer_key="c3idEPThKowMGG5kPPPqbzmZt",oauth_token="1508102518601093122-j9rC5AZXxrdWzvfVHLhx1G013nStpU",oauth_signature_method="HMAC-SHA1",oauth_timestamp="1648582676",oauth_nonce="hvFMq3Ctuwz",oauth_version="1.0",oauth_signature="VHFSPghwlUfQQ%2F5y4u9Brgq%2BqEA%3D"',
+            'Authorization'  =>  'OAuth oauth_consumer_key="c3idEPThKowMGG5kPPPqbzmZt",oauth_token="1508102518601093122-j9rC5AZXxrdWzvfVHLhx1G013nStpU",oauth_signature_method="HMAC-SHA1",oauth_timestamp="1656256484",oauth_nonce="KDPbfU31PCy",oauth_version="1.0",oauth_signature="u3AtilUDnPj7LmPLkYLCwhPA6p4%3D"',
             'Content-Type'  =>  'application/json',
         ])->post('https://api.twitter.com/2/tweets',[
-            'text' => 'Venez soutenir le projet ' . $projet->nom . ' qui entame sa campagne de financement'
+            'text' => 'Venez soutenir le projet ' . $projet->nom . ' qui entame sa campagne de financement' . '      ' . 'http://kononkoulou.com/projet/overview/' . $projet->id
         ]);
+
+        // dd($response1);
 
         if($owner != null && $owner->email != null && $owner->firstname && $owner->lastname){
 

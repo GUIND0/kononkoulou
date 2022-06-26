@@ -1,6 +1,6 @@
 @extends('back_office.partials.main')
 @section('content')
-<div class="row justify-content-end mb-3 px-3">
+<div class="justify-content-end mb-3 px-3">
     <a class="btn btn-primary" href="{{ route('sector.list')}}"><i class="ti-home mr-2"></i>Retour</a>
 </div>
 <div class="row">
@@ -21,7 +21,7 @@
                     @endif
                 </div>
 
-              <button type="submit" class="btn btn-primary mr-2">Enregistrer</button>
+              <button type="submit" class="btn btn-primary mr-2 mt-2">Enregistrer</button>
 
             </form>
           </div>
