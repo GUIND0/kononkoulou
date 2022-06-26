@@ -161,7 +161,7 @@
 
                 function details(value, row, index){
 
-                    return `<a href="{{ route('projet.overview','') }}/${row.project_id}" class="btn btn-success">Voir plus</a></td>`;
+                    return `<a href="{{ route('projet.overview','') }}/${row.project_id}" class="btn btn-success">Détail</a></td>`;
                 }
 
                 function dateFormatter(value, row, index) {
@@ -200,7 +200,7 @@
 
                 function statusFormatter(value, row, index){
                     if (value == 'en_cours'){
-                        return `<span class="badge bg-info">En cours de traitement</span>`;
+                        return `<span class="badge bg-info">En traitement</span>`;
                     }
                     if (value == 'valider')
                     {

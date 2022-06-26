@@ -15,13 +15,13 @@
                         <table class="table text-center table-striped table-borderless">
                             <thead>
                             <tr>
-                                <th>Nom Tontine</th>
+                                <th>Tontine</th>
                                 <th>Demandeur</th>
                                 <th>Cotisation</th>
-                                <th>Total Main disponible</th>
+                                <th>Main disponible</th>
                                 <th>Main Restant</th>
-                                <th>Date debut</th>
-                                <th>Date fin</th>
+                                <th>Debut</th>
+                                <th>Fin</th>
                                 <th>Actions</th>
                             </tr>
                             </thead>

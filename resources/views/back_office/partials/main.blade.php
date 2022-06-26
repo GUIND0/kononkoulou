@@ -29,7 +29,6 @@
 
             <ul class="navbar-nav flex-row align-items-center ms-auto">
 
-
               <!-- User -->
               @if (auth()->user())
                 <li class="nav-item navbar-dropdown dropdown-user dropdown">
@@ -74,12 +73,6 @@
                         <a class="dropdown-item" href="{{ route('settings.index') }}">
                         <i class="bx bx-user me-2"></i>
                         <span class="align-middle">Mon Profile</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a class="dropdown-item" href="#">
-                        <i class="bx bx-cog me-2"></i>
-                        <span class="align-middle">Réglages</span>
                         </a>
                     </li>
 
