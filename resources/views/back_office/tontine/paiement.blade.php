@@ -21,13 +21,10 @@
                         <div class="form-group">
                             <input type="number" id="amount" name="amount" class="form-control" placeholder="Montant" required>
                         </div>
-                        <div class="form-group mt-3">
-                            <input type="checkbox" style="width: 25px;height: 25px;" id="anonyme" name="anonyme">
-                            <label for="anonyme">Anonyme</label>
-                        </div>
+
                         <input type="hidden" name="campaigns_id" value="{{$id}}">
                         <input type="hidden" name="user_id" value="{{ auth()->user()->id }}">
-                        <div class="row justify-content-center">
+                        <div class="row justify-content-center mt-5">
                             <div class="col-sm-6" id="paypal-button-container">
                         </div>
                 </div>
@@ -73,9 +70,9 @@
                     });
 
                     $.ajax({
-                        url: "{{route('paypal.funding')}}",
+                        url: "{{route('paypal.tontine')}}",
                         type: 'POST',
-                        data : { campaigns_id : {{ $campaigns_id }}, users_id : {{ auth()->user()->id }}, montant: document.getElementById('amount').value.toString(),anonyme: document.getElementById('anonyme').value.toString()},
+                        data : { tontine_id : {{ $tontine->id }}, users_id : {{ auth()->user()->id }}, montant: document.getElementById('amount').value.toString()},
                         success: function(result) {
                             if(result == 'done'){
                                 Swal.fire({
@@ -84,7 +81,7 @@
                                  confirmButtonText: 'OK',
 
                                 }).then((result) => {
-                                    window.location.href = '/contribution/index';
+                                    window.location.href = 'tontine/my-tontines';
                                 });
 
                             }else{

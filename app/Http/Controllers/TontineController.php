@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\ParticipationTontine;
 use App\Models\Tontine;
 use App\Models\User;
+use App\Models\VersementTontine;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
@@ -14,7 +16,20 @@ class TontineController extends Controller
 
     public function show(Request $request,$id){
         $tontine = Tontine::findOrFail($id);
-        return view('back_office.tontine.show',compact('tontine'));
+
+        $participants = User::select(
+            DB::raw('DISTINCT(users.id) as id'),
+            DB::raw("users.firstname as firstname"),
+            DB::raw("users.lastname as lastname"),
+        )
+        ->join('participation_tontine','participation_tontine.users_id','users.id')
+        ->join('tontines','tontines.id','participation_tontine.tontine_id')
+        ->where('tontines.id',$tontine->id)
+        ->get();
+
+
+
+        return view('back_office.tontine.show',compact('tontine','participants'));
     }
 
     public function create(Request $request){
@@ -59,6 +74,12 @@ class TontineController extends Controller
         Session::flash('success', 'Votre projet a été enregistrer avec succèss !');
 
         return redirect()->back();
+    }
+
+
+    public function paiement(Request $request,$id){
+        $tontine = Tontine::findOrFail($id);
+        return view('back_office.tontine.paiement',compact('id','tontine'));
     }
 
     public function demande(Request $request,$id){
@@ -163,7 +184,7 @@ class TontineController extends Controller
         $tontines = Tontine::select(
             DB::raw('DISTINCT(tontines.id)'),
             DB::raw('tontines.*')
-        )->join('participation_tontine','participation_tontine.id','tontines.id')
+        )->join('participation_tontine','participation_tontine.tontine_id','tontines.id')
         ->where('participation_tontine.users_id',auth()->user()->id)
         ->where('participation_tontine.statut','valider')
         ->get();

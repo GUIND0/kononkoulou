@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Campaign;
 use App\Models\Funding;
+use App\Models\VersementTontine;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 use Srmklive\PayPal\Facades\PayPal;
@@ -26,6 +27,25 @@ class PaypalController extends Controller
         if($funding->save()){
             return "done";
         }
+
+        return "fail";
+
+    }
+
+
+    public function tontineFunding(Request $request)
+    {
+
+        $versement = new VersementTontine();
+        $versement->users_id = $request->users_id;
+        $versement->tontines_id =  $request->tontine_id;
+        $versement->montant = strval(intval($request->montant)  * 550);
+
+        if($versement->save()){
+            return "done";
+        }
+
+
 
         return "fail";
 
