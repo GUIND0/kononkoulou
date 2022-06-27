@@ -35,6 +35,7 @@ Route::group(['middleware' => 'auth'], function(){
     Route::delete('projet/delete/{id}', [ProjetController::class, 'delete'])->name('projet.delete');
     Route::delete('campaign/delete/{id}', [CampagneController::class, 'delete'])->name('campagne.delete');
 
+    Route::get('/tontine/paiement/page/{id}',[TontineController::class,'paiement'])->name('tontine.paiement');
     Route::get('/tontine/my-tontines',[TontineController::class,'mylist'])->name('tontine.mylist');
     Route::get('/tontine/list',[TontineController::class,'list'])->name('tontine.list');
     Route::get('/tontine/list-demande',[TontineController::class,'listDemande'])->name('tontine.listdemande');
@@ -79,3 +80,4 @@ Route::post('/final_step/{id}',[UserController::class,'finalStep'])->name('regis
 Route::get('back_office/',[BackOfficeController::class,'index'])->name('back_office.index');
 Route::get('/',[BackOfficeController::class,'accueil'])->name('back_office.accueil');
 Route::post('/store/funding',[PaypalController::class,'storeFunding'])->name('paypal.funding');
+Route::post('/tontine-funding',[PaypalController::class,'tontineFunding'])->name('paypal.tontine');

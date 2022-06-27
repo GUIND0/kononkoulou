@@ -1,48 +1,39 @@
 @extends('back_office.partials.main')
 @section('content')
-@if(!auth()->user()->profil->name == "users")
+
 <div class="justify-content-end px-3 mb-4">
-    <a  href="{{ route('projet.add')}}" class="btn btn-primary">
+    <a  href="{{ route('tontine.paiement', $tontine->id)}}" class="btn btn-primary">
         <i class="ti-plus"></i>
-            Ajouter une tontine
+            Faire un versement
       </a>
 </div>
-@endif
+
 
 <div class="row">
-    <div class="col-md-12 grid-margin stretch-card">
+    <div class="col-md-6 grid-margin stretch-card">
       <div class="card">
 
         <div class="card-body">
-          <p class="card-title mb-3 mt-3">Mes tontines</p>
+          <p class="card-title mb-3 mt-3">Participants</p>
 
 
-              @if ($tontines != '[]')
+              @if ($participants != '[]')
                     <div class="table-responsive">
                         <table class="table text-center table-striped table-borderless">
                             <thead>
                             <tr>
-                                <th>Nom Tontine</th>
-                                <th>Cotisation (FCFA)</th>
-                                <th>Date debut</th>
-                                <th>Date fin</th>
+                                <th>Prénom</th>
+                                <th>Nom</th>
                                 <th>Actions</th>
                             </tr>
                             </thead>
                             <tbody>
 
-                            @foreach ($tontines as $tontine)
+                            @foreach ($participants as $participant)
                                 <tr>
-                                    <td><b>{{ $tontine->nom }}</b></td>
-                                    <td> <span class="badge bg-success">{{ number_format($tontine->cotisation,0,',',' ')  }}</span></td>
-                                    <td>{{ $tontine->debut }}</td>
-                                    <td>{{ $tontine->fin }}</td>
-                                    <td>
-                                        <a
-                                        href="{{ route('tontine.show',$tontine->id) }}"
-                                        class="btn btn-info text-white">Consulter</a>
-                                    </td>
-
+                                    <td>{{ $participant->firstname }}</td>
+                                    <td>{{ $participant->lastname }}</td>
+                                    <td></td>
                                 </tr>
                             @endforeach
 
@@ -51,7 +42,7 @@
                     </div>
 
               @else
-                    <h3 class="alert alert-info alert-block text-center">Aucune tontine enregistrée</h3>
+                    <h3 class="alert alert-info alert-block text-center">Aucun Participant enregistré</h3>
               @endif
 
 
@@ -60,47 +51,6 @@
     </div>
   </div>
 
-
-<!-- Modal -->
-@foreach ($tontines as $key => $tontine)
-<div class="modal fade" id="modalCenter{{$tontine->id}}" tabindex="-1" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
-      <div class="modal-content">
-        <form action="{{route('tontine.demande',$tontine->id)}}" id="{{$tontine->id}}" method="POST">
-            @csrf
-            <div class="modal-header">
-            <h5 class="modal-title" id="modalCenterTitle">Demande Participation</h5>
-            <button
-                type="button"
-                class="btn-close"
-                data-bs-dismiss="modal"
-                aria-label="Close"
-            ></button>
-            </div>
-            <div class="modal-body">
-            <div class="row">
-                <div class="col mb-3">
-                <label for="nameWithTitle" class="form-label">Main</label>
-
-                        <input name="main" type="number" id="nameWithTitle" class="form-control" placeholder="Combien de main voulez-vous ?" />
-                        <input name="users_id" type="hidden" id="nameWithTitle" class="form-control" value="{{ auth()->user()->id }}" />
-                </form>
-                </div>
-            </div>
-            </div>
-
-            <div class="modal-footer">
-                <button onclick="form_submit({{ $tontine->id }})" class="btn btn-primary mt-2 text-white">Envoyer</button>
-            </div>
-       </form>
-      </div>
-    </div>
-  </div>
-
-
-@endforeach
-
-   <!-- Modal -->
 @endsection
 
 @section('script')
