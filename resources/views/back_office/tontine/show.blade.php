@@ -10,12 +10,70 @@
 
 
 <div class="row">
-    <div class="col-md-6 grid-margin stretch-card">
+    <div class="col-md-6 mb-4 stretch-card transparent">
+        <div class="card">
+            <div class="card-body">
+                <div class="card-title d-flex align-items-start justify-content-between">
+                    <div class="avatar flex-shrink-0">
+                        <img
+                            src="/new/assets/img/icons/unicons/chart-success.png"
+                            alt="chart success"
+                            class="rounded"
+                        />
+                    </div>
+                </div>
+                <span class="fw-semibold d-block mb-1">Cotisation Mensuelle</span>
+                <h3 class="card-title mb-2">{{ number_format($tontine->cotisation,0,',',' ')  }}</h3>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="col-md-6 mb-4 stretch-card transparent">
+        <div class="card">
+            <div class="card-body">
+                <div class="card-title d-flex align-items-start justify-content-between">
+                    <div class="avatar flex-shrink-0">
+                        <img
+                            src="/new/assets/img/icons/unicons/chart-success.png"
+                            alt="chart success"
+                            class="rounded"
+                        />
+                    </div>
+                </div>
+                <span class="fw-semibold d-block mb-1">Montant à encaisser</span>
+                <h3 class="card-title mb-2">{{ number_format($tontine->cotisation * $tontine->nombre_main,0,',',' ')  }}</h3>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-6 mb-4 stretch-card transparent">
+        <div class="card">
+            <div class="card-body">
+                <div class="card-title d-flex align-items-start justify-content-between">
+                    <div class="avatar flex-shrink-0">
+                        <img
+                            src="/new/assets/img/icons/unicons/chart-success.png"
+                            alt="chart success"
+                            class="rounded"
+                        />
+                    </div>
+                </div>
+                <span class="fw-semibold d-block mb-1">Nombre de Tour</span>
+                <h3 class="card-title mb-2">{{ number_format($tontine->nombre_main,0,',',' ')  }}</h3>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+<div class="row">
+    <div class="col-md-12 grid-margin stretch-card">
       <div class="card">
 
         <div class="card-body">
           <p class="card-title mb-3 mt-3">Participants</p>
-
 
               @if ($participants != '[]')
                     <div class="table-responsive">
