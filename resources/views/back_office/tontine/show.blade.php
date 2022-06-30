@@ -22,8 +22,8 @@
                         />
                     </div>
                 </div>
-                <span class="fw-semibold d-block mb-1">Cotisation Mensuelle</span>
-                <h3 class="card-title mb-2">{{ number_format($tontine->cotisation,0,',',' ')  }}</h3>
+                <span class="fw-semibold d-block mb-1">Ma Cotisation Mensuelle</span>
+                <h3 class="card-title mb-2">{{ number_format($tontine->cotisation * $participation->main,0,',',' ')  }}</h3>
             </div>
         </div>
     </div>
@@ -42,7 +42,7 @@
                     </div>
                 </div>
                 <span class="fw-semibold d-block mb-1">Montant à encaisser</span>
-                <h3 class="card-title mb-2">{{ number_format($tontine->cotisation * $tontine->nombre_main,0,',',' ')  }}</h3>
+                <h3 class="card-title mb-2">{{ number_format(($tontine->cotisation * $tontine->nombre_main) * $participation->main,0,',',' ')  }}</h3>
             </div>
         </div>
     </div>
@@ -70,14 +70,55 @@
 
 <div class="row">
     <div class="col-md-12 grid-margin stretch-card">
-      <div class="card">
+        <div class="card">
+          <div class="card-body">
+            <p class="card-title mb-3 mt-3">Mes versements</p>
 
+                @if ($participants != '[]')
+                      <div class="table-responsive text-nowrap">
+                          <table class="table table-bordered">
+                              <thead>
+                              <tr>
+                                  <th>Date</th>
+                                  <th>Montant</th>
+
+                              </tr>
+                              </thead>
+                              <tbody>
+
+                              @foreach ($versements as $versement)
+                                  <tr>
+                                      <td>{{ $versement->created_at->format('d-m-Y') }}</td>
+                                      <td>{{ number_format($versement->montant,0,',',' ')}}</td>
+
+                                  </tr>
+                              @endforeach
+
+                              </tbody>
+                          </table>
+                      </div>
+
+                @else
+                      <h3 class="alert alert-info alert-block text-center">Aucun Participant enregistré</h3>
+                @endif
+
+
+          </div>
+        </div>
+      </div>
+</div>
+
+
+<div class="row mt-5">
+    <!---------------->
+    <div class="col-md-12 grid-margin stretch-card">
+      <div class="card">
         <div class="card-body">
           <p class="card-title mb-3 mt-3">Participants</p>
 
               @if ($participants != '[]')
-                    <div class="table-responsive">
-                        <table class="table text-center table-striped table-borderless">
+                    <div class="table-responsive text-nowrap">
+                        <table class="table table-bordered">
                             <thead>
                             <tr>
                                 <th>Prénom</th>
