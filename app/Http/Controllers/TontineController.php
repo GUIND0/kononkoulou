@@ -16,6 +16,7 @@ class TontineController extends Controller
 
     public function show(Request $request,$id){
         $tontine = Tontine::findOrFail($id);
+        $participation = ParticipationTontine::where('tontine_id',$tontine->id)->where('users_id',auth()->user()->id)->where('statut','valider')->first();
 
         $participants = User::select(
             DB::raw('DISTINCT(users.id) as id'),
@@ -27,9 +28,11 @@ class TontineController extends Controller
         ->where('tontines.id',$tontine->id)
         ->get();
 
+        $versements = VersementTontine::where('tontines_id',$tontine->id)->where('users_id',auth()->user()->id)->get();
 
 
-        return view('back_office.tontine.show',compact('tontine','participants'));
+
+        return view('back_office.tontine.show',compact('tontine','participants','participation','versements'));
     }
 
     public function create(Request $request){
