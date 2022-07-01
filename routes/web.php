@@ -41,6 +41,7 @@ Route::group(['middleware' => 'auth'], function(){
     Route::get('/tontine/list-demande',[TontineController::class,'listDemande'])->name('tontine.listdemande');
     Route::get('/tontine/create',[TontineController::class,'create'])->name('tontine.create');
     Route::get('/tontine/show/{id}',[TontineController::class,'show'])->name('tontine.show');
+    Route::get('/tontine/start/{id}',[TontineController::class,'startTontine'])->name('tontine.startTontine');
     Route::post('/tontine/store',[TontineController::class,'store'])->name('tontine.store');
     Route::post('/tontine/demande/{id}',[TontineController::class,'demande'])->name('tontine.demande');
     Route::get('/tontine/accepeter-demande/{id}',[TontineController::class,'accepteDemande'])->name('tontine.acceptedemande');

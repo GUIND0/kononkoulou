@@ -15,8 +15,6 @@
 
         <div class="card-body">
           <p class="card-title mb-3 mt-3">Liste tontines</p>
-
-
               @if ($tontines != '[]')
                     <div class="table-responsive">
                         <table class="table text-center table-striped table-borderless">
@@ -62,6 +60,7 @@
 
                                     @else
                                         <td>
+                                            <a class="btn btn-success" href="{{ route('tontine.startTontine',$tontine->id) }}">Lancer</a>
                                             <a class="btn btn-primary" href="{{ route('tontine.create',$tontine->id) }}">Modifier</a>
                                             <a data-id="{{ $tontine->id }}"  class="btn btn-danger delete text-white" onclick="" >Supprimer</a>
                                         </td>

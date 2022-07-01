@@ -72,7 +72,7 @@
     <div class="col-md-12 grid-margin stretch-card">
         <div class="card">
           <div class="card-body">
-            <p class="card-title mb-3 mt-3">Mes versements</p>
+            <p class="card-title mb-3 mt-3">Mes versements ({{$versements->count()}}/{{ $tontine->nombre_main }})</p>
 
                 @if ($participants != '[]')
                       <div class="table-responsive text-nowrap">
@@ -99,7 +99,7 @@
                       </div>
 
                 @else
-                      <h3 class="alert alert-info alert-block text-center">Aucun Participant enregistré</h3>
+                      <h3 class="alert alert-info alert-block text-center">Aucun Versement enregistré</h3>
                 @endif
 
 
@@ -123,7 +123,8 @@
                             <tr>
                                 <th>Prénom</th>
                                 <th>Nom</th>
-                                <th>Actions</th>
+                                <th>Montant</th>
+                                <th>Retrait</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -132,7 +133,14 @@
                                 <tr>
                                     <td>{{ $participant->firstname }}</td>
                                     <td>{{ $participant->lastname }}</td>
-                                    <td></td>
+                                    <td>{{ number_format($participant->montant,0,',',' ') }}</td>
+                                    <td>
+                                        @if ($participant->statut == 1)
+                                            <span class="badge bg-success">Retiré</span>
+                                        @else
+                                            <span class="badge bg-info">Pas Retiré</span>
+                                        @endif
+                                    </td>
                                 </tr>
                             @endforeach
 
