@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\ParticipationTontine;
+use App\Models\Retrait;
 use App\Models\Tontine;
 use App\Models\User;
 use App\Models\VersementTontine;
@@ -18,13 +19,13 @@ class TontineController extends Controller
         $tontine = Tontine::findOrFail($id);
         $participation = ParticipationTontine::where('tontine_id',$tontine->id)->where('users_id',auth()->user()->id)->where('statut','valider')->first();
 
-        $participants = User::select(
-            DB::raw('DISTINCT(users.id) as id'),
+        $participants = Retrait::select(
+            DB::raw('retraits.*'),
             DB::raw("users.firstname as firstname"),
             DB::raw("users.lastname as lastname"),
         )
-        ->join('participation_tontine','participation_tontine.users_id','users.id')
-        ->join('tontines','tontines.id','participation_tontine.tontine_id')
+        ->join('users','users.id','retraits.users_id')
+        ->join('tontines','tontines.id','retraits.tontines_id')
         ->where('tontines.id',$tontine->id)
         ->get();
 
@@ -37,6 +38,41 @@ class TontineController extends Controller
 
     public function create(Request $request){
         return view('back_office.tontine.create');
+    }
+
+    public function startTontine(Request $request,$id){
+        $order = 1;
+        $tontine = Tontine::findOrFail($id);
+
+        if($tontine->debut <= Carbon::now()){
+
+            $retraits = Retrait::where('tontines_id',$tontine->id)->get();
+
+            if($retraits == '[]' || $retraits == null){
+
+                $participations = ParticipationTontine::where('tontine_id',$tontine->id)->where('statut','valider')->get();
+                // dd( $participations);
+                if($participations != '[]' && $participations != null){
+                    foreach ($participations as $key => $participation) {
+                        for ($i=0; $i < intval($participation->main); $i++) {
+                            $retrait = new Retrait();
+                            $retrait->montant = ($tontine->cotisation * $tontine->nombre_main);
+                            $retrait->users_id = $participation->users_id;
+                            $retrait->tontines_id = $id;
+                            $retrait->tour = $order++;
+                            $retrait->save();
+                        }
+
+                    }
+                    Session::flash('success', 'Tontine demarrée avec succès !');
+                    return redirect()->back();
+                }
+            }else{
+                Session::flash('warning', 'Cette tontine est deja en cours !');
+                return redirect()->back();
+            }
+
+        }
     }
 
 
@@ -155,7 +191,6 @@ class TontineController extends Controller
         ->select(
             DB::raw("DISTINCT(tontines.id)"),
             DB::raw("tontines.*"),
-            // DB::raw("(tontines.nombre_main - SUM(IF(participation_tontine.statut = 'valider',participation_tontine.main,0))) as nbr")
         )
         ->get();
 
