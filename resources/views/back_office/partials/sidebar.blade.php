@@ -134,25 +134,6 @@
             </a>
         </li>
 
-        {{-- <li class="menu-item {{ (request()->routeIs('user.*')) ? 'active' : '' }}">
-            <a href="javascript:void(0)" class="menu-link menu-toggle">
-            <i class="menu-icon tf-icons bx bx-copy"></i>
-            <div data-i18n="Extended UI">Utilisateurs</div>
-            </a>
-            <ul class="menu-sub">
-            <li class="menu-item {{ (request()->routeIs('user.list')) ? 'active' : '' }}">
-                <a href="{{ route('user.list') }}" class="menu-link">
-                <div data-i18n="Perfect Scrollbar">Validation</div>
-                </a>
-            </li>
-            <li class="menu-item {{ (request()->routeIs('user.list')) ? 'active' : '' }}">
-                <a href="{{ route('user.list') }}" class="menu-link">
-                <div data-i18n="Text Divider">Listes</div>
-                </a>
-            </li>
-            </ul>
-        </li> --}}
-
         <li class="menu-item {{ (request()->routeIs('campagne.*')) ? 'active' : '' }}">
             <a href="javascript:void(0)" class="menu-link menu-toggle">
                 <i class="menu-icon tf-icons bx bx-user-voice"></i>
@@ -198,6 +179,27 @@
             <div data-i18n="Analytics">Secteur</div>
             </a>
         </li>
+
+        <li class="menu-item {{ (request()->routeIs('retrait.*')) ? 'active' : '' }}">
+            <a href="javascript:void(0)" class="menu-link menu-toggle">
+                <i class="menu-icon tf-icons bx bx-group"></i>
+            <div data-i18n="Extended UI">Encaissement</div>
+            </a>
+            <ul class="menu-sub">
+            <li class="menu-item {{ (request()->routeIs('retrait.tontine')) ? 'active' : '' }}">
+                <a href="{{ route('retrait.tontine') }}" class="menu-link">
+                <div data-i18n="Perfect Scrollbar">Tontine</div>
+                </a>
+            </li>
+            <li class="menu-item {{ (request()->routeIs('retrait.listCampagne')) ? 'active' : '' }}">
+                <a href="{{ route('retrait.listCampagne') }}" class="menu-link">
+                <div data-i18n="Text Divider">Campagne</div>
+                </a>
+            </li>
+            </ul>
+        </li>
+
+
 
         </ul>
     </aside>

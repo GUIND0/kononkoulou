@@ -7,6 +7,7 @@ use App\Http\Controllers\ContributionController;
 use App\Http\Controllers\FundingController;
 use App\Http\Controllers\PaypalController;
 use App\Http\Controllers\ProjetController;
+use App\Http\Controllers\RetraitController;
 use App\Http\Controllers\SectorController;
 use App\Http\Controllers\TontineController;
 use App\Http\Controllers\UserController;
@@ -57,6 +58,13 @@ Route::group(['middleware' => 'auth'], function(){
     Route::get('/compagne/rejeter/{id}',[CampagneController::class,'rejeter'])->name('campagne.rejeter');
 
     Route::get('/funding/choice/{id}',[FundingController::class,'index'])->name('funding.index');
+
+    Route::get('/retrait/list',[RetraitController::class,'listTontine'])->name('retrait.tontine');
+    Route::get('/retrait/statut/{id}',[RetraitController::class,'retraitStatut'])->name('retrait.tontinestatut');
+
+    Route::get('/retrait/listCampagne',[RetraitController::class,'listCampagne'])->name('retrait.listCampagne');
+
+
 
     Route::get('reglage/',[UserController::class,'settings'])->name('settings.index');
     Route::post('/user/update',[UserController::class,'update'])->name('user.update');
