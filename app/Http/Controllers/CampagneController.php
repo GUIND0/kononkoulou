@@ -2,19 +2,21 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Campaign;
-use App\Models\Project;
-use App\Models\TypeCampaign;
 use App\Models\User;
+use GuzzleHttp\Client;
+use App\Models\Project;
+use App\Models\Campaign;
+use App\Models\TypeCampaign;
+use GuzzleHttp\HandlerStack;
 use Illuminate\Http\Request;
+use League\Flysystem\Config;
 use Illuminate\Support\Facades\DB;
+use HepplerDotNet\FlashToastr\Flash;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Mail;
-use Illuminate\Support\Facades\Session;
-use GuzzleHttp\Client;
-use GuzzleHttp\HandlerStack;
 use GuzzleHttp\Subscriber\Oauth\Oauth1;
-use League\Flysystem\Config;
+use Illuminate\Support\Facades\Session;
+
 
 class CampagneController extends Controller
 {
@@ -89,7 +91,8 @@ class CampagneController extends Controller
             $old = Campaign::where('projects_id',$request->projet)->get();
             $old = Campaign::where('projects_id',$request->projet)->whereIn('status',array('en_cours','valider','success'))->get();
             if($old != '[]'){
-                Session::flash('error', 'Ce projet ne peut plus être soumis à une campagne de financement participatif !');
+                Flash::error('Erreur !','Ce projet ne peut plus être soumis à une campagne de financement participatif !');
+                //Session::flash('error', 'Ce projet ne peut plus être soumis à une campagne de financement participatif !');
                 return redirect()->route('campagne.list');
             }
             $campagne->projects_id = $request->projet;
@@ -113,7 +116,7 @@ class CampagneController extends Controller
             ]);
             $old = Campaign::where('projects_id',$request->projet)->whereIn('status',array('en_cours','valider','success'))->get();
             if($old != '[]'){
-                Session::flash('error', 'Ce projet ne peut plus être soumis à une campagne de financement participatif !');
+                Flash::error('Erreur !','Ce projet ne peut plus être soumis à une campagne de financement participatif !');
                 return redirect()->route('campagne.list');
             }
             $campagne->projects_id = $request->projet;
@@ -134,7 +137,8 @@ class CampagneController extends Controller
             $old = Campaign::where('projects_id',$request->projet)->get();
             $old = Campaign::where('projects_id',$request->projet)->whereIn('status',array('en_cours','valider','success'))->get();
             if($old != '[]'){
-                Session::flash('error', 'Ce projet ne peut plus être soumis à une campagne de financement participatif !');
+                Flash::error('Erreur !','Ce projet ne peut plus être soumis à une campagne de financement participatif !');
+
                 return redirect()->route('campagne.list');
             }
             $campagne->projects_id = $request->projet;
@@ -146,10 +150,9 @@ class CampagneController extends Controller
 
         }
 
-
-
         $campagne->save();
-        Session::flash('success', 'Votre demande a été enregistrer avec succèss !');
+        Flash::success('Bravo','Votre demande a été enregistrer avec succèss !');
+
         return redirect()->route('campagne.list');
 
     }
@@ -191,12 +194,13 @@ class CampagneController extends Controller
 
 
             }catch(\Exception $e){
-                Session::flash('warning', 'Opération effectué avec erreur !');
+                Flash::warning('Oups !','Opération effectué avec erreur !');
                 return redirect()->back();
             }
 
         }
-        Session::flash('success', 'Opération effectué avec success !');
+        Flash::success('Bravo','Opération effectuée avec success !');
+
         return redirect()->back();
     }
 
@@ -220,12 +224,14 @@ class CampagneController extends Controller
                 );
 
             }catch(\Exception $e){
-                Session::flash('warning', 'Opération effectué avec erreur !');
+                Flash::warning('Oups !','Opération effectué avec erreur !');
+
                 return redirect()->back();
             }
 
         }
-        Session::flash('success', 'Opération effectué avec success !');
+        Flash::success('Bravo','Opération effectuée avec success !');
+
         return redirect()->back();
     }
 
@@ -237,18 +243,19 @@ class CampagneController extends Controller
         $campaign = Campaign::findOrFail($id);
 
         if($campaign->status == "valider" || $campaign->status == "success" || $campaign->status == "echec"){
-            Session::flash('error', 'Cette campagne ne peut être supprimer!');
+            Flash::error('Erreur ! ','Cet element ne peut être supprimer !');
             return "fail";
         }
 
         if ($campaign->delete()) {
-            Session::flash('success', 'Votre campagne a été supprimée avec succèss !');
+            Flash::success('Bravo','Opération effectuée avec success !');
+
             return "done";
         } else {
-            Session::flash('error', 'Cette campagne ne peut être supprimer!');
+            Flash::error('Erreur ! ','Cet element ne peut être supprimer !');
             return "fail";
         }
-        Session::flash('error', 'Cette campagne ne peut être supprimer!');
+        Flash::error('Erreur ! ','Cet element ne peut être supprimer !');
         return "fail";
     }
 

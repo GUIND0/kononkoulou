@@ -11,6 +11,7 @@ use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
+use HepplerDotNet\FlashToastr\Flash;
 
 class TontineController extends Controller
 {
@@ -64,11 +65,11 @@ class TontineController extends Controller
                         }
 
                     }
-                    Session::flash('success', 'Tontine demarrée avec succès !');
+                    Flash::success('Bravo','Opération effectuée avec success !');
                     return redirect()->back();
                 }
             }else{
-                Session::flash('warning', 'Cette tontine est deja en cours !');
+                Flash::warning('Oups','Cette tontine est deja en cours !');
                 return redirect()->back();
             }
 
@@ -110,7 +111,7 @@ class TontineController extends Controller
         $tontine->fin = request('fin');
         $tontine->save();
 
-        Session::flash('success', 'Votre projet a été enregistrer avec succèss !');
+         Flash::success('Bravo','Opération effectuée avec success !');
 
         return redirect()->back();
     }
@@ -128,7 +129,7 @@ class TontineController extends Controller
         $participation->tontine_id = $tontine->id;
         $participation->main = request('main');
         $participation->save();
-        Session::flash('success', 'Votre projet a été enregistrer avec succèss !');
+         Flash::success('Bravo','Opération effectuée avec success !');
         return redirect()->back();
     }
 
@@ -162,7 +163,7 @@ class TontineController extends Controller
             );
 
         }
-        Session::flash('success', 'Action effectuée avec succèss !');
+        Flash::success('Bravo','Opération effectuée avec success !');
         return redirect()->back();
     }
 
@@ -181,7 +182,7 @@ class TontineController extends Controller
             );
 
         }
-        Session::flash('success', 'Action effectuée avec succèss !');
+        Flash::success('Bravo','Opération effectuée avec success !');
         return redirect()->back();
     }
 
@@ -236,13 +237,13 @@ class TontineController extends Controller
         $tontine = Tontine::findOrFail($id);
 
         if ($tontine->delete()) {
-            Session::flash('success', 'Tontine a été supprimer avec succèss !');
+            Flash::success('Bravo','Opération effectuée avec success !');
             return "done";
         } else {
-            Session::flash('error', 'Ce objet ne peut être supprimer!');
+            Flash::error('Erreur ! ','Cet element ne peut être supprimer !');
             return "fail";
         }
-        Session::flash('error', 'Ce objet ne peut être supprimer!');
+        Flash::error('Erreur ! ','Cet element ne peut être supprimer !');
         return "fail";
     }
 

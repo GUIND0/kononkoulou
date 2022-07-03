@@ -86,7 +86,7 @@
                         },
 
                         {
-                            field: 'statut',
+                            field: 'encaissement',
                             title: "Statut",
                             sortable: true,
                             formatter: statusFormatter,
@@ -105,7 +105,7 @@
 
                 function details(value, row, index){
 
-                    return `<a href="{{ route('retrait.tontinestatut','') }}/${row.id}" class="btn btn-success">Retirer</a></td>`;
+                    return `<a href="{{ route('retrait.campagneStatut','') }}/${row.id}" class="btn btn-success">Retirer</a></td>`;
                 }
 
                 function dateFormatter(value, row, index) {

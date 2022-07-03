@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Campaign;
 use App\Models\Funding;
 use App\Models\Retrait;
+use App\Models\Campaign;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use HepplerDotNet\FlashToastr\Flash;
 use Illuminate\Support\Facades\Session;
 
 class RetraitController extends Controller
@@ -32,7 +33,7 @@ class RetraitController extends Controller
         $retrait = Retrait::findOrFail($id);
         $retrait->statut = 1;
         $retrait->save();
-        Session::flash('success', 'Operation effectuée avec succèss !');
+        Flash::success('Bravo','Opération effectué avec success !');
         return redirect()->back();
     }
 
@@ -55,10 +56,10 @@ class RetraitController extends Controller
 
 
     public function campagneStatut(Request $request,$id){
-        $retrait = Retrait::findOrFail($id);
-        $retrait->statut = 1;
-        $retrait->save();
-        Session::flash('success', 'Operation effectuée avec succèss !');
+        $campagne = Campaign::findOrFail($id);
+        $campagne->encaissement = 1;
+        $campagne->save();
+        Flash::success('Bravo','Operation effectuée avec succèss !');
         return redirect()->back();
     }
 }

@@ -4,7 +4,7 @@
  <div class="layout-wrapper layout-content-navbar">
     <div class="layout-container">
       <!-- Menu -->
-
+      @include('flash-toastr::message')
       @include('back_office.partials.sidebar')
       <!-- / Menu -->
 

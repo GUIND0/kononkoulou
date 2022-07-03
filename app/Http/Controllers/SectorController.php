@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Sector;
 use Illuminate\Http\Request;
+use HepplerDotNet\FlashToastr\Flash;
 use Illuminate\Support\Facades\Session;
 
 class SectorController extends Controller
@@ -36,7 +37,8 @@ class SectorController extends Controller
 
         $sector->name = $request->name;
         $sector->save();
-        Session::flash('success', 'Ajouté avec succès !');
+        Flash::success('Bravo','Opération effectuée avec success !');
+
 
         return redirect()->route("sector.list");
     }
@@ -60,13 +62,14 @@ class SectorController extends Controller
 
         $sector = Sector::findOrFail($id);
         if ($sector->delete()) {
-            Session::flash('success', 'Votre object a été supprimer avec succèss !');
+            Flash::success('Bravo','Opération effectuée avec success !');
+
             return "done";
         } else {
-            Session::flash('error', 'Ce object ne peut être supprimer!');
+             Flash::error('Erreur ! ','Cet element ne peut être supprimer !');
             return "fail";
         }
-        Session::flash('error', 'Ce object ne peut être supprimer!');
+         Flash::error('Erreur ! ','Cet element ne peut être supprimer !');
         return "fail";
     }
 }
