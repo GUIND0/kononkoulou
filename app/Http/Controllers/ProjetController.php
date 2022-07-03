@@ -10,6 +10,7 @@ use App\Models\Sector;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
+use HepplerDotNet\FlashToastr\Flash;
 
 class ProjetController extends Controller
 {
@@ -135,7 +136,7 @@ class ProjetController extends Controller
             }
         }
 
-        Session::flash('success', 'Votre projet a été enregistrer avec succèss !');
+        Flash::success('Bravo','Opération effectuée avec success !');
 
         return redirect()->route('projet.list');
     }
@@ -155,18 +156,19 @@ class ProjetController extends Controller
         }
 
         if($campaigns){
-            Session::flash('error', 'Ce projet ne peut être supprimer!');
+
+            Flash::error('Erreur ! ','Cet element ne peut être supprimer !');
             return "fail";
         }
 
         if ($projet->delete()) {
-            Session::flash('success', 'Votre projet a été supprimer avec succèss !');
+            Flash::success('Bravo','Opération effectuée avec success !');
             return "done";
         } else {
-            Session::flash('error', 'Ce projet ne peut être supprimer!');
+            Flash::error('Erreur ! ','Cet element ne peut être supprimer !');
             return "fail";
         }
-        Session::flash('error', 'Ce projet ne peut être supprimer!');
+        Flash::error('Erreur ! ','Cet element ne peut être supprimer !');
         return "fail";
     }
 

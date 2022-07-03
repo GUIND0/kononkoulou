@@ -14,6 +14,7 @@ use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Str;
+use HepplerDotNet\FlashToastr\Flash;
 
 class UserController extends Controller
 {
@@ -71,7 +72,7 @@ class UserController extends Controller
 
         }
 
-        Session::flash('success', 'Opération effectué avec success !');
+        Flash::success('Bravo','Opération effectuée avec success !');
         return redirect()->back();
 
     }
@@ -319,7 +320,7 @@ class UserController extends Controller
         }
 
         $user->save();
-        Session::flash('success', 'Opération effectuée avec succèss !');
+        Flash::success('Bravo','Opération effectuée avec success !');
 
         return redirect()->back();
 
@@ -338,10 +339,10 @@ class UserController extends Controller
                 [$user->email]
             );
 
-            Session::flash('success', 'Opération effectuée avec succèss !');
+            Flash::success('Bravo','Opération effectuée avec success !');
             return redirect()->back();
         }else{
-            Session::flash('error', 'Echec de opération !');
+            Flash::error('erreur', 'Echec de opération !');
             return redirect()->back();
         }
     }
@@ -359,7 +360,7 @@ class UserController extends Controller
                 <p>Veuillez vous connecter pour profiter d'une experience unique.",
                 [$user->email]
             );
-            Session::flash('success', 'Opération effectuée avec succèss !');
+            Flash::success('Bravo','Opération effectuée avec success !');
             return redirect()->back();
         }else{
             Session::flash('error', 'Echec de opération !');

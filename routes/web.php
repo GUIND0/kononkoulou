@@ -63,6 +63,7 @@ Route::group(['middleware' => 'auth'], function(){
     Route::get('/retrait/statut/{id}',[RetraitController::class,'retraitStatut'])->name('retrait.tontinestatut');
 
     Route::get('/retrait/listCampagne',[RetraitController::class,'listCampagne'])->name('retrait.listCampagne');
+    Route::get('/campagneStatut/statut/{id}',[RetraitController::class,'campagneStatut'])->name('retrait.campagneStatut');
 
 
 
