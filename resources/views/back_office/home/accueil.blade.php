@@ -14,7 +14,7 @@
                         <h2 class="text-white mb-2 animated zoomIn">La plus grande plateforme de financement participatif en Afrique.</h2>
                         <p class="text-white pb-3 animated zoomIn">Kononkoulou est une plateforme unique sur laquelle les porteurs de projets et les investisseurs peuvent s'exprimer.</p>
                         <a href="{{ route('register') }}" class="btn btn-light py-sm-3 px-sm-5 rounded-pill me-3 animated slideInLeft">Créer un compte</a>
-                        <a href="{{ route('login') }}" class="btn btn-outline-light py-sm-3 px-sm-5 rounded-pill animated slideInRight">Se connecter</a>
+                        <a href="{{ route('login') }}" class="btn btn-outline-light py-sm-3 px-sm-5 rounded-pill animated slideInRight mt-2">Se connecter</a>
                     </div>
                     <div class="col-lg-6 text-center text-lg-start">
                         <img class="img-fluid" src="/new/img/a.png" alt="">

@@ -7,19 +7,18 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
 </p>
 
-## About Laravel
+## A propos Kononkoulou
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+Le manque de financement est la première source de beaucoup d’arrêts ou d’abandon de projets en Afrique. Le financement participatif est une potentielle solution à ce problème puisque étant un outil de collecte de fonds en ligne et permettant à un ensemble de contributeurs de choisir collectivement de financer un projet. C’est une alternative sérieuse au financement bancaire classique. Il permet ainsi à tout porteur de projet de promouvoir et collecter des fonds de façon transparente. Malgré son potentiel énorme pour l’Afrique, il est sous-exploité voire inconnu par les porteurs de projet.
+Le travail qui sera présenter dans ce mémoire consistera à analyser et développer une plateforme de financement participatif nommé Kononkoulou.
+Kononkoulou est une plateforme web sur laquelle n’importe qui peut exposer son projet au grand public en vue d’un financement et/ou financer un projet qui a attiré son attention de manière transparente, sans distinction ou préférence pour un type de projet ou un secteur d’activité.
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+Lack of funding is the primary source of many stalled or abandoned projects in Africa. Participatory financing is a potential solution to this problem since it is an online fundraising tool that allows a group of contributors to collectively choose to finance a project. It is a serious alternative to traditional bank financing. It allows any project owner to promote and collect funds in a transparent way. Despite its enormous potential for Africa, it is under-exploited and even unknown by project leaders.
+The work that will be presented in this thesis will consist of analyzing and developing a participatory financing platform named Kononkoulou.
+Kononkoulou is a web platform on which anyone can expose their project to the general public for funding and/or finance a project that has attracted their attention in a transparent manner, without distinction or preference for a type of project or a sector of activity.
+
+
 
 ## Learning Laravel
 
@@ -48,19 +47,6 @@ We would like to extend our thanks to the following sponsors for funding Laravel
 - **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
 - **[Lendio](https://lendio.com)**
 - **[Romega Software](https://romegasoftware.com)**
-
-## Contributing
-
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
 ## License
 
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
