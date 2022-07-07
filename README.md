@@ -16,7 +16,8 @@ Lack of funding is the primary source of many stalled or abandoned projects in A
 The work that will be presented in this thesis will consist of analyzing and developing a participatory financing platform named Kononkoulou.
 Kononkoulou is a web platform on which anyone can expose their project to the general public for funding and/or finance a project that has attracted their attention in a transparent manner, without distinction or preference for a type of project or a sector of activity.
 
-
+## Lien
+https://kononkoulou.com/
 
 ## Technologies
 <a href="https://laravel.com/" target="_blank" rel="noreferrer"><img src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/laravel-colored.svg" width="36" height="36" alt="Laravel" /></a>
