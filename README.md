@@ -28,9 +28,9 @@ https://kononkoulou.com/
 <a href="https://jquery.com/" target="_blank" rel="noreferrer"><img src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/jquery-colored.svg" width="36" height="36" alt="JQuery" /></a>
 
 ## Credit
-https://themeselection.com/
-https://htmlcodex.com/
-https://themewagon.com/
+<p>https://themeselection.com/</p>
+<p>https://htmlcodex.com/</p>
+<p>https://themewagon.com/</p>
 
 ## License
 
