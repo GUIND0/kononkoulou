@@ -1,4 +1,4 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://kononkoulou.com/kononkoulou.png" width="400"></a></p>
+<p align="center">Kononkoulou</p>
 
 <p align="center">
 <a href="https://travis-ci.org/laravel/framework"><img src="https://kononkoulou.com/kononkoulou.png" alt="Build Status"></a>
@@ -18,6 +18,7 @@ Kononkoulou is a web platform on which anyone can expose their project to the ge
 
 ## Lien
 https://kononkoulou.com/
+
 
 ## Technologies
 <a href="https://laravel.com/" target="_blank" rel="noreferrer"><img src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/laravel-colored.svg" width="36" height="36" alt="Laravel" /></a>
