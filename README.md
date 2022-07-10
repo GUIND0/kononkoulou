@@ -17,7 +17,7 @@ The work that will be presented in this thesis will consist of analyzing and dev
 Kononkoulou is a web platform on which anyone can expose their project to the general public for funding and/or finance a project that has attracted their attention in a transparent manner, without distinction or preference for a type of project or a sector of activity.
 
 ## Lien
-https://kononkoulou.com/
+http://kononkoulou.com/
 
 
 ## Technologies
