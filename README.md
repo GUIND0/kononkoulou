@@ -1,7 +1,7 @@
 <p align="center">Kononkoulou</p>
 
 <p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="http://kononkoulou.com/new/img/a.png" alt="Build Status"></a>
+<a href="https://travis-ci.org/laravel/framework"><img src="http://kononkoulou.com/kg.png" alt="Build Status"></a>
 
 </p>
 
